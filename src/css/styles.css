@@ -1,18 +1,133 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
-@import url('./animations.css');
+/* Reset  */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
 
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* main  */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.search-form {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-input {
+  width: 272px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #808080;
+  margin-right: 8px;
+  border: 1px solid #808080;
+}
+
+.search-input:hover {
+  border: 1px solid #000000;
+}
+
+.search-input:active {
+  border: 1px solid #4e75ff;
+}
+
+button {
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-width: 91px;
+  height: 40px;
+  background: #4e75ff;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+}
+
+button:hover {
+  background: #6c8cff;
+}
+/* cards */
+
+.gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.gallery-item {
+  border: 1px solid #808080;
+  width: 360px;
+  height: 200px;
+}
+
+.card-img {
+  width: 360px;
+  height: 152px;
+}
+
+.desc-list {
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4px 22px;
+}
+
+.desc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.desc-value {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.desc-quantity {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 200%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}

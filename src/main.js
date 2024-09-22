@@ -1,0 +1,32 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import { fetchImages } from './js/pixabay-api.js';
+import { renderImages } from './js/render-functions.js';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const gallery = new SimpleLightbox('.gallery a');
+const searchForm = document.querySelector('.search-form');
+
+searchForm.addEventListener('submit', submitSearch);
+
+function submitSearch(event) {
+  event.preventDefault();
+  const query = event.target.elements.query.value.trim();
+  if (!query) {
+    return;
+  }
+
+  fetchImages(query)
+    .then(images => {
+      renderImages(images);
+      gallery.refresh();
+    })
+    .catch(error => {
+      iziToast.error({
+        title: 'Error',
+        message:
+          'An error occurred while fetching images. Please try again later.',
+      });
+    });
+}
