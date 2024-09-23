@@ -1,12 +1,13 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import { fetchImages } from './js/pixabay-api.js';
-import { renderImages } from './js/render-functions.js';
+import { renderImages, showLoader, hideLoader } from './js/render-functions.js';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = new SimpleLightbox('.gallery a');
 const searchForm = document.querySelector('.search-form');
+const loader = document.querySelector('.loader');
 
 searchForm.addEventListener('submit', submitSearch);
 
@@ -16,6 +17,7 @@ function submitSearch(event) {
   if (!query) {
     return;
   }
+  loader.style.display = 'block';
 
   fetchImages(query)
     .then(images => {
@@ -28,5 +30,9 @@ function submitSearch(event) {
         message:
           'An error occurred while fetching images. Please try again later.',
       });
+    })
+    .finally(() => {
+      loader.style.display = 'none';
+      searchForm.reset();
     });
 }
