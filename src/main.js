@@ -8,6 +8,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const gallery = new SimpleLightbox('.gallery a');
 const searchForm = document.querySelector('.search-form');
 const loader = document.querySelector('.loader');
+const galleryEl = document.querySelector('.gallery');
 
 searchForm.addEventListener('submit', submitSearch);
 
@@ -17,7 +18,9 @@ function submitSearch(event) {
   if (!query) {
     return;
   }
-  loader.style.display = 'block';
+  galleryEl.innerHTML = '';
+
+  loader.classList.add('isVisible');
 
   fetchImages(query)
     .then(images => {
@@ -32,7 +35,7 @@ function submitSearch(event) {
       });
     })
     .finally(() => {
-      loader.style.display = 'none';
+      loader.classList.remove('isVisible');
       searchForm.reset();
     });
 }
