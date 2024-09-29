@@ -9,6 +9,7 @@ const gallery = new SimpleLightbox('.gallery a');
 const searchForm = document.querySelector('.search-form');
 const loader = document.querySelector('.loader');
 const galleryEl = document.querySelector('.gallery');
+const listItems = galleryEl.querySelectorAll('li');
 
 searchForm.addEventListener('submit', submitSearch);
 
@@ -18,7 +19,8 @@ function submitSearch(event) {
   if (!query) {
     return;
   }
-  galleryEl.innerHTML = '';
+
+  listItems.forEach(item => item.remove());
 
   loader.classList.add('isVisible');
 
